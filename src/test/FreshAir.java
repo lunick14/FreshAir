@@ -27,6 +27,7 @@ SOFTWARE.
 
 // package com.freshair;
 
+import java.net.URL;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.geometry.Pos;
@@ -35,9 +36,16 @@ import javafx.scene.layout.VBox;
 import javafx.application.Application;
 
 public class FreshAir extends Application {
-	public static void home (String[] args) {
-		FreshAir.launch(args);
+	/* Launch JavaFX application */
+	public static void home (String[] args) { FreshAir.launch(args); }
+
+	/*  Connect to the API first.  */
+	private static final String AirVisual_AQI_API = "https://";
+	static { 
+		try { new URL(AirVisual_AQI_API).openConnection().connect(); }
+		catch (Exception e) { ; };
 	}
+
 
 	// JavaFX Lifecycle Method #1
 	@Override public void init () { 
@@ -60,12 +68,10 @@ public class FreshAir extends Application {
 		rootNode.setAlignment(Pos.CENTER);
 
 		//Components -> SceneGraph
-		// rootNode.getChildren().addAll(titleh,entry,bkg,rsp);
-		rootNode.setAlignment(Pos.CENTER);
-		rootNode.setPadding(new Insets(1));
+		// rootNode.getChildren().addAll()
 
         //Scene
-        Scene scene = new Scene(rootNode, 325, 610); 
+        Scene scene = new Scene(rootNode, 1024, 668); 
 
 
    		//Restrict resizeable
